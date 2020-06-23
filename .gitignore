@@ -1,3 +1,4 @@
 .DS_Store
+*.paprikarecipe
 venv/
 __pycache__/
