@@ -62,9 +62,10 @@ class RecipeParser:
 
     @property
     def main_photo_url(self):
-        return self._tree.xpath('//div[contains(@class, "indivrecipe-product-photo")]//source/@data-srcset')[0]
+        return self._tree.xpath('//div[contains(@class, "indivrecipe-product-photo")]'
+                                '//source[@media="(max-width: 2x 10000px)"]/@data-srcset')[0]
 
     @property
     def step_photo_urls(self):
         return self._tree.xpath('//div[@class="indivrecipe-steps-container"]//picture'
-                                '//source[last()]/@data-srcset')
+                                '//source[@media="(max-width: 2x 10000px)"]/@data-srcset')
