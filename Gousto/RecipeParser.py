@@ -53,8 +53,9 @@ class RecipeParser:
                 paragraph_fragments = paragraph.xpath('descendant::text()[not(parent::span[@class="text-danger"])]')
                 paragraph_text = ''.join(paragraph_fragments).strip()
                 paragraph_text = re.sub(r'^(\w+:)', '**\\1**', paragraph_text)
-                paragraph_text += '.' if re.match(r'.*[\w]', paragraph_text) else ''
-                step_paragraphs.append(paragraph_text)
+                paragraph_text += '.' if re.match(r'.*\w$', paragraph_text) else ''
+                if len(paragraph_text) > 0:
+                    step_paragraphs.append(paragraph_text)
 
             parsed_steps.append(step_paragraphs)
 
